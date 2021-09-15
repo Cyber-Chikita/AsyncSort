@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AsyncSorts
@@ -67,10 +68,10 @@ namespace AsyncSorts
         {
             if (listBox != null)
             {
-                listBox.Items.Clear();
+                listBox.Invoke(new Action(() => listBox.Items.Clear()));
                 foreach (int item in items)
                 {
-                    listBox.Items.Add(item);
+                    listBox.Invoke(new Action(() => listBox.Items.Add(item)));
                 }
             }
         }
